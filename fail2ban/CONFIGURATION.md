@@ -11,6 +11,7 @@ Keeping the system updated ensures all security patches are applied.
 
 ```bash
 sudo apt update && sudo apt upgrade -y
+---
 
 🛠 Step 2 — Install Fail2Ban
 sudo apt install fail2ban -y
