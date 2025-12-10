@@ -45,3 +45,25 @@ The goal is to implement advanced security measures, detect threats in real-time
 └── security-headers/
     ├── SECURITY_HEADERS_OVERVIEW.md
     └── CSP.md
+
+Each folder contains detailed, step-by-step documentation of how the task was implemented, along with commands, explanations, and verification steps.
+
+🛠 Environment
+
+OS: Ubuntu (VM on VMware Workstation)
+
+Tools: Fail2Ban, Node.js (Express), HTTP client (curl/Postman), browser dev tools
+
+Access: SSH from host (PuTTY)
+
+🔐 Learning Outcomes
+
+By the end, I will have:
+
+Set up real-time intrusion detection using Fail2Ban.
+
+Hardened API endpoints with rate limiting, CORS, and API keys.
+
+Implemented modern security headers and a basic CSP policy.
+
+Understood how these layers work together to improve overall security posture.
