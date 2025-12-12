@@ -138,7 +138,8 @@ action = nftables
 
 🧑‍💻 Author
 
-Internship Project – Muhammad Rehan Week 4: Advanced Threat Detection & Web Security Enhancements
+Internship Project – Muhammad Rehan Week 
+
 ✅ Conclusion
 
 This project demonstrates a production-grade intrusion detection system with automated alerting and forensic-ready CSV reporting, fully aligned with modern security operations practices and internship requirements.
