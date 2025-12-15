@@ -1,39 +1,35 @@
-2. API Security Hardening (Node.js + Express)
-🎯 Goal
+# 2. API Security Hardening (Node.js + Express)
 
+## 🎯 Goal
 Harden an Express.js API by implementing:
 
-Rate limiting to prevent brute-force attacks
+- Rate limiting to prevent brute-force attacks
+- Proper CORS allowlist configuration
+- API key–based authentication for protected endpoints
 
-Proper CORS allowlist configuration
+---
 
-API key–based authentication for protected endpoints
+## 🛠 Tech Stack
+- Node.js + Express
+- dotenv
+- express-rate-limit
+- cors
 
-🛠 Tech Stack
+---
 
-Node.js + Express
+## 🚀 Project Setup
 
-dotenv
-
-express-rate-limit
-
-cors
-
-🚀 Project Setup
-
-Install dependencies:
-
+### Install dependencies
+```bash
 npm init -y
 npm install express dotenv express-rate-limit cors
-
-
-Run the server:
-
+Run the server
+bash
+Copy code
 node src/server.js
-
+```
 🔐 Implemented Security Controls
 1️⃣ Rate Limiting (Brute-Force Protection)
-
 A global rate limiter is applied to all requests.
 
 Configuration
@@ -44,14 +40,13 @@ Limit: 100 requests per IP
 
 Result
 
-Excessive requests return HTTP 429 – Too Many Requests
+Excessive requests return 429 Too Many Requests
 
-Evidence
+Proof
 
-Screenshot showing repeated requests to /health resulting in 429
+Screenshot showing multiple requests to /health resulting in 429
 
 2️⃣ CORS Allowlist (Unauthorized Origin Blocking)
-
 CORS is configured using a strict allowlist.
 
 Behavior
@@ -59,27 +54,27 @@ Behavior
 Requests from allowed origins succeed
 
 Requests from unauthorized origins are blocked
+```
+Test Command
 
-Test Case
-
+bash
+Copy code
 curl -i -H "Origin: http://evil.com" http://localhost:3000/health
-
-
+```
 Result
 
-Returns HTTP 403 – Forbidden
+Returns 403 Forbidden
 
-No stack trace or internal error leakage
+Error message: CORS Forbidden: Origin not allowed
 
-Evidence
+Proof
 
-Screenshot showing allowed origin access
+Screenshot showing allowed origin request
 
 Screenshot showing blocked origin (http://evil.com)
 
 3️⃣ API Key Authentication (Protected Endpoints)
-
-Secure endpoints are protected using an API key middleware.
+Secure endpoints are protected using API key authentication.
 
 Authentication Method
 
@@ -88,22 +83,24 @@ Header: x-api-key
 Value loaded from .env
 
 Protected Endpoint
-
+```
+http
+Copy code
 GET /secure
-
-
+```
 Example Request
 
+```bash
+Copy code
 curl -H "x-api-key: internship-secret-key" http://localhost:3000/secure
-
-
+```
 Results
 
 Without API key → 401 Unauthorized
 
 With valid API key → Success response
 
-Evidence
+Proof
 
 Screenshot without API key
 
@@ -111,25 +108,36 @@ Screenshot with valid API key
 
 📡 API Endpoints
 Public
+```
+http
+Copy code
 GET /health
-Response: { "status": "ok" }
-
+```
+Response:
+```
+json
+Copy code
+{ "status": "ok" }
 Protected
+http
+Copy code
 GET /secure
-Requires header: x-api-key
+Requires header:
 
+css
+Copy code
+x-api-key
+```
 📸 Evidence Collected
-
 Project setup & folder structure
 
-Rate limiting test (429 response)
+Rate limiting test (429 Too Many Requests)
 
 CORS allowlist test (allowed vs blocked origin)
 
-API key authentication (unauthorized vs authorized)
+API key authentication test (unauthorized vs authorized)
 
 📝 Notes
-
-ICMP traffic (ping) was blocked due to phone hotspot networking.
+ICMP traffic (ping) may be blocked on phone hotspot networks.
 
 All verification was performed using HTTP-based testing (curl), which is sufficient for API security validation.
