@@ -25,7 +25,7 @@ npm init -y
 npm install express dotenv express-rate-limit cors
 Run the server
 bash
-Copy code
+
 node src/server.js
 ```
 🔐 Implemented Security Controls
@@ -57,8 +57,6 @@ Requests from unauthorized origins are blocked
 ```
 Test Command
 
-bash
-Copy code
 curl -i -H "Origin: http://evil.com" http://localhost:3000/health
 ```
 Result
@@ -85,13 +83,11 @@ Value loaded from .env
 Protected Endpoint
 ```
 http
-Copy code
 GET /secure
 ```
 Example Request
 
 ```bash
-Copy code
 curl -H "x-api-key: internship-secret-key" http://localhost:3000/secure
 ```
 Results
@@ -110,22 +106,19 @@ Screenshot with valid API key
 Public
 ```
 http
-Copy code
 GET /health
 ```
 Response:
 ```
-json
-Copy code
 { "status": "ok" }
 Protected
 http
-Copy code
+
 GET /secure
 Requires header:
 
 css
-Copy code
+
 x-api-key
 ```
 📸 Evidence Collected
